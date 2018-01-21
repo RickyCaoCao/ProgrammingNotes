@@ -1,11 +1,24 @@
 # CSS Notes
 
+## Combinators
+- Space = descendant
+- `>` = immediate child
+- `+` = adjacent sibling
+- `~` = general sibling
+
 ## Selectors
 For selecting elements to style: <https://www.w3schools.com/cssref/css_selectors.asp>
 
 ## Niche
 - Clicking on a button is both :focus and :active state
   - Define :active after :focus in order to get a different state 
+
+  
+## BEM - Block, Element, Modifier
+https://css-tricks.com/bem-101/
+Naming convention for HTML/CSS
+- use `__` for child elements
+- use `--` for modifications to style
 
 # SASS Notes
 
