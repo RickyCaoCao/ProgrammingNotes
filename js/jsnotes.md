@@ -36,3 +36,9 @@ console.log(i) //outputs 10
 	```
 
 - `const` objects cannot be reassigned but their properties can
+
+## Node.JS Libraries
+- .dotenv - for local environment variables
+- qs - for querystring
+- JSON
+- 
