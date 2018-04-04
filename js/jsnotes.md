@@ -16,7 +16,6 @@ var foo = 'World!';
 console.log(`Hello ${foo}`);
 ```
 
-
 ### var vs. let vs. const
 Link: https://madhatted.com/2016/1/25/let-it-be
 
@@ -47,6 +46,15 @@ console.log(i) //outputs 10
 	```
 
 - `const` objects cannot be reassigned but their properties can
+
+## Useful Functions
+**Array.prototype.map()**: Modifies each element of an array and makes new array
+
+```javascript
+var new_array = arr.map( (currentItem [, index [, origArray]]) {
+	//do something
+}
+```
 
 ## Callback Functions
 - js is single-threaded so callback functions will run after other code has finished

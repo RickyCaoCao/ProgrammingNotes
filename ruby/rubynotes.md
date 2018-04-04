@@ -110,8 +110,6 @@ Only for `foo.bar` kind of usage. You can access variables simply like this: `fo
 - **attr_reader** = read only
 - **attr_writer** = write only
 
-
-
 ### Alias_Methods
 - `alias_methods new_name old_name`
 - use alias_methods rather than alias
@@ -162,6 +160,20 @@ Only for `foo.bar` kind of usage. You can access variables simply like this: `fo
   - can also call private methods but not good practice
 - `gets` = method that gets input from user
 - `gets.chomp` = removes extra line that is automatically at end of input
+
+
+### With
+
+
+## Variables/Fields
+
+### Splat *
+Using `*` will turn an array into multiple values. Ex:
+
+```rb
+an_array = [1, 2, 3]
+foo(*an_array) // == foo(1, 2, 3)\
+```
 
 ## Constants
 Since there is no typed variables, constants are mutable. Use `.freeze`. Example: s`var example = 'foo'.freeze`
