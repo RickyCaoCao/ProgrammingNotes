@@ -16,5 +16,11 @@ Some general notes about architectural ideas.
 ### Multi-Tenancy
 - prone to hard failures
 
-### Security Matters
+### Security
 - getting hacked = losing customers
+
+### Multiple DNS Providers
+- prevents impact of DDoS attacks on one specific DNS provider (see DDoS on Dyn in 2016 - <https://dyn.com/blog/dyn-analysis-summary-of-friday-october-21-attack/>)
+
+### Database Pipelines
+- **Kafka > Cassandra**

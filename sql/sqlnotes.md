@@ -1,5 +1,35 @@
 # SQL Notes
 
+## DB Problems
+
+Missing Index
+Bad Schema
+Slow Connection
+Elastic Search
+
+‘EXPLAIN Command’
+  - key, ????
+
+ISNULL is function and functions cannot be used on column fields in MySQL
+
+
+Making temp tables are slow, try getting ID and then searching by ID
+When are temp tables made?
+	- UNION
+
+1. Avoid temp table
+2. Limit data that gets copied to table
+3. Avoid TEXT columns
+
+## Migration
+- Typically can use `ALTER` in `SQL` but that can't be done in real-time
+- Percona Toolkit to change schema in real-time (ptosc)
+	- Ruby gem
+	- only suitable for small tables
+
+## Distributing Database Load
+- load balancer = higher latency
+
 ### Primary and Foreign Keys
 
 Foreign key is a field that points to primary key in another table
@@ -8,4 +38,3 @@ Foreign key is a field that points to primary key in another table
 
  foreign key constraint prevents destroying links between tables
 
-#### SQL has no arrays in columns???

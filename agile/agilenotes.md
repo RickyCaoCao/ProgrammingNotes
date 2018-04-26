@@ -133,7 +133,9 @@ Example Definitions:
 - Light documentation
 - No new bugs or tech debt
 - Accepted by PO/PM with accordance to acceptance criteria
-- Review it in Sprint Retro
+- Review it in Sprint Retro'
+
+- Explain in PR how AC is met (what it does, testing, pictures)
 
 ## Definition of Ready
 (ready to work on)
