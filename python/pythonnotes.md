@@ -8,7 +8,7 @@
 
 1. **Everything is an object**
 
-2. **[Line Comprehensions](http://www.pythonforbeginners.com/basics/list-comprehensions-in-python)**: ` some_list = [expression(i) for i in some_list if filter(i)]`
+2. **[List Comprehensions](http://www.pythonforbeginners.com/basics/list-comprehensions-in-python)**: ` some_list = [expression(i) for i in some_list if filter(i)]`
 
    - Ex:
 
@@ -91,15 +91,169 @@
   - that means using an outer function to return an inner function
   - the inner function takes in all variables that are needed for function overloading
 
-## Closures
+- 
 
-### Basics: Nested Function
+## Data Structures
+
+**Booleans: ** True/False (notice capitals)
+
+**Strings**
+
+- essentially list of chars so list functions work most of the time
+- length: `len(a_str)`
+- slicing: `a_str[ left : right : skips ]`
+- `a_str[::]` means string as is 
+- `a_str[::-1] ` means string reversed
+- Split phrase on whitespace: `a_str.split()`
+- Split phrase on letter 't': `a_str.split('t')`
+- Join list of strings with space in between: `' '.join(str_list)`
+- Strip whitespaces, trailing characters, newline: `a_str.strip()`
+- `\` is escape character
+
+**Lists**
+
+- `colours = ["red", orange", "yellow", "green", "blue", "indigo", "violet"]`
+
+- mutable
+
+- negative indexing
+
+- Length: `len(colours)`
+
+- Adding Element: `colours.append("gray")`
+
+- Removing elements:
+
+  - ```python
+     del a_list[1] # would remove "orange"
+     ```
+    ```
+  
+  - ``` python
+    colours.remove("indigo") # would remove "indigo"
+    ```
+
+  - ``` python
+    colours.pop(3) # would remove "green"
+    ```
+
+- Concatenate lists: 
+
+  - ```python
+    colours + ["turquoise"] # appends and changes 'colours'
+    ```
+
+- Slicing: `colours[2:4]`
+
+- Converting sequence (string, tuples) to list: `list([iterable])`
+
+  - Can also be collection (set, dictionary) or iterator
+
+**Sets**
+
+- A list without duplicates
+
+- Use `&` and `|` for intersection and union of sets, respectively
+
+  - This is faster than list comprehension (see `ex5.py`)
+
+  - ``` python
+    set(a) & set(b) # faster
+    set([n for n in a if n in b]) # slower
+    ```
+
+**Arrays**
+
+- [See numpy](http://cs231n.github.io/python-numpy-tutorial/#numpy)
+- uses a lot less space than lists
+- good for doing math
+
+**Dictionaries** (aka hashmaps)
+
+- add key: `dict['newkey'] = 3`
+- get key: `dict['some_key']`
+  - better way: `dict.get('some_key', 'failback_val')`
+    - prevents crashing if key doesn't exist
+- get all keys: `dict.keys()`
+- get all key-value pairs: `for pair in dict.items():`
+
+## Classes
+
+### Properties
+
+**Private:** Use `_` before a variable to denote that it is private
+
+- `self._secret`
+- this is a convention -- python does not apply any restrictions
+
+**Type Checking:**
+
+- `num.isDigit()`
+- or `type(num) is int`
+
+## Common Functions
+
+`raw_input(...)` takes user input
+
+- don't use `input(...)` as that runs `eval()` on the argument
+
+`for i in range(left_incl, right_excl):`
+
+- better than while loop
+
+try/except == try/catch in Java
+
+`map(func, list)` = returns a list where `func` runs on each element of `list`
+
+### File I/O
+
+- use `with` statement to automatically close the file -- good if program crashes as file will close and not be in memory
+
+``` python
+with open(f_name, 'w') as open_file:
+    open_file.write("Hello World!")
+```
+
+**Modes:**
+
+- `r` = read
+- `w` = write
+- `r+` = read + write
+
+**Reading Files:**
+
+- best method: `for line in open_file:`
+- `open_file.readline()` - reads one line
+- `open_file.read()` - reads entire file and returns string
+- `open_file.readlines()` - reads entire file and returns list of strings (each line is a string)
+
+**Writing Files:**
+
+- opening existing file will automatically delete
+- can only write strings
+
+## Useful Libs
+
+- random - RNG
+  - `random.sample(a_list, num_of_samples)` take `a_list`  samples `num_of_samples` times
+- requests - calls APIs :)
+- BeautifulSoup - web scraper, parses html. Needs requests
+- Scrapy - can both get and scrape web pages
+- json
+  - writing to json file: `json.dump(json_obj, open_file)`
+  - reading from json file: `json.load(open_file)`
+
+## Other Notes
+
+### Closures
+
+**Basics: Nested Function**
 
 - inner function can access variables of enclosing scope
   - these variables are called "non-local" and are read-only
   - to modify these variables, we must explicitly declare them using "nonlocal" keyword
 
-``` python
+```python
 def outerFunction(text):
     text = text
     
@@ -112,11 +266,11 @@ outerFunction("Hello World")
 >>> "Hello World"
 ```
 
-### Closures
+**Closures**
 
 - creating a meta-function (that can generate another function)
 
-  ``` python
+  ```python
   def make_multiplier_func(n):
       def multiply(x):
           return x*n
@@ -140,7 +294,7 @@ outerFunction("Hello World")
 
 - Example:
 
-  ``` python
+  ```python
   def logger(func):
       def log_func(*args):
           logging.info('Running "{}" with arguments {}'.format(func.__name__, args))
@@ -152,66 +306,15 @@ outerFunction("Hello World")
   add_logger(3, 4)	# gives 7
   ```
 
-  
-
-## Data Structures
-
-**Lists**
-
-- `colours = ["red", orange", "yellow", "green", "blue", "indigo", "violet"]`
-
-- mutable
-
-- negative indexing
-
-- Length: `len(colours)`
-
-- Adding Element: `colours.append("gray")`
-
-- Removing elements:
-
-  - ```python
-     del a_list[1] # would remove "orange"
-    ```
-
-  - ``` python
-    colours.remove("indigo") # would remove "indigo"
-    ```
-
-  - ``` python
-    colours.pop(3) # would remove "green"
-    ```
-
-- Concatenate lists: 
-
-  - ```python
-    colours + ["turquoise"] # appends and changes 'colours'
-    ```
-
-- Slicing: `colours[2:4]`
-
-- 
-
-**Arrays**
-
-- [See numpy](http://cs231n.github.io/python-numpy-tutorial/#numpy)
-- uses a lot less space than lists
-- good for doing math
-
-## Classes
-
-### Properties
-
-**Private:** Use `_` before a variable to denote that it is private
-
-- `self._secret`
-- this is a convention -- python does not apply any restrictions 
-
-## Other Notes
+### Scoping
 
 **Lexicon/Static Scoping:** variables can only be used within initiation block (e.g. private vars)
 
 **Dynamic Scoping:** variables that can be used anywhere
-```
 
-```
+
+
+### if \__name__ == "\_\_main__": 
+
+- to deal with importing issues
+- without `if __name__ == "__main__":`, the file will run on `import` 

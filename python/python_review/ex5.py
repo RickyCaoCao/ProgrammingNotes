@@ -1,8 +1,4 @@
 # Exercise 5 - List Overlap
-
-# range(incl, excl)
-# list([iterable]) - converts sequence (string, tuples)
-# or collection (set, dictionary) or iterator and converts to list
 # use & and | on sets for intersection and union, respectively
 
 import random as rand
